@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app.data;
+package com.example.android.spinitcloud.app.data;
 
 import android.content.UriMatcher;
 import android.net.Uri;
@@ -32,8 +32,6 @@ public class TestUriMatcher extends AndroidTestCase {
 
     // content://com.example.android.sunshine.app/weather"
     private static final Uri TEST_WEATHER_DIR = AssayContract.AssayEntry.CONTENT_URI;
-    private static final Uri TEST_WEATHER_WITH_LOCATION_DIR = AssayContract.AssayEntry.buildWeatherLocation(LOCATION_QUERY);
-    private static final Uri TEST_WEATHER_WITH_LOCATION_AND_DATE_DIR = AssayContract.AssayEntry.buildAssayWithDate(LOCATION_QUERY, TEST_DATE);
     // content://com.example.android.sunshine.app/location"
 
     /*
@@ -44,12 +42,8 @@ public class TestUriMatcher extends AndroidTestCase {
     public void testUriMatcher() {
         UriMatcher testMatcher = AssayProvider.buildUriMatcher();
 
-        assertEquals("Error: The WEATHER URI was matched incorrectly.",
-                testMatcher.match(TEST_WEATHER_DIR), AssayProvider.WEATHER);
-        assertEquals("Error: The WEATHER WITH LOCATION URI was matched incorrectly.",
-                testMatcher.match(TEST_WEATHER_WITH_LOCATION_DIR), AssayProvider.WEATHER_WITH_LOCATION);
-        assertEquals("Error: The WEATHER WITH LOCATION AND DATE URI was matched incorrectly.",
-                testMatcher.match(TEST_WEATHER_WITH_LOCATION_AND_DATE_DIR), AssayProvider.WEATHER_WITH_LOCATION_AND_DATE);
+        assertEquals("Error: The ASSAYS URI was matched incorrectly.",
+                testMatcher.match(TEST_WEATHER_DIR), AssayProvider.ASSAYS);
 
     }
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -28,15 +28,13 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
     private static final String DETAILFRAGMENT_TAG = "DFTAG";
 
     private boolean mTwoPane;
-    private String mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLocation = Utility.getPreferredLocation(this);
 
-        setContentView(R.layout.activity_main);
-        if (findViewById(R.id.weather_detail_container) != null) {
+        setContentView(com.example.android.spinitcloud.app.R.layout.activity_main);
+        if (findViewById(com.example.android.spinitcloud.app.R.id.weather_detail_container) != null) {
             // The detail container view will be present only in the large-screen layouts
             // (res/layout-sw600dp). If this view is present, then the activity should be
             // in two-pane mode.
@@ -46,7 +44,7 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
             // fragment transaction.
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.weather_detail_container, new DetailFragment(), DETAILFRAGMENT_TAG)
+                        .replace(com.example.android.spinitcloud.app.R.id.weather_detail_container, new DetailFragment(), DETAILFRAGMENT_TAG)
                         .commit();
             }
         } else {
@@ -55,7 +53,7 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
         }
 
         DashboardFragment dashboardFragment =  ((DashboardFragment)getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_forecast));
+                .findFragmentById(com.example.android.spinitcloud.app.R.id.fragment_dashboard));
         dashboardFragment.setUseTodayLayout(!mTwoPane);
 
         //SpinitSyncAdapter.initializeSyncAdapter(this);
@@ -64,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(com.example.android.spinitcloud.app.R.menu.main, menu);
         return true;
     }
 
@@ -76,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == com.example.android.spinitcloud.app.R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
@@ -87,19 +85,6 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
     @Override
     protected void onResume() {
         super.onResume();
-        String location = Utility.getPreferredLocation( this );
-        // update the location in our second pane using the fragment manager
-            if (location != null && !location.equals(mLocation)) {
-            DashboardFragment ff = (DashboardFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_forecast);
-            if ( null != ff ) {
-                ff.onLocationChanged();
-            }
-            DetailFragment df = (DetailFragment)getSupportFragmentManager().findFragmentByTag(DETAILFRAGMENT_TAG);
-            if ( null != df ) {
-                df.onLocationChanged(location);
-            }
-            mLocation = location;
-        }
     }
 
     @Override
@@ -115,7 +100,7 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
             fragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.weather_detail_container, fragment, DETAILFRAGMENT_TAG)
+                    .replace(com.example.android.spinitcloud.app.R.id.weather_detail_container, fragment, DETAILFRAGMENT_TAG)
                     .commit();
         } else {
             Intent intent = new Intent(this, DetailActivity.class)

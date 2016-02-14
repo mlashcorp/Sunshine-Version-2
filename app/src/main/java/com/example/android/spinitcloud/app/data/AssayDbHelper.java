@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app.data;
+package com.example.android.spinitcloud.app.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.sunshine.app.data.AssayContract.AssayEntry;
+import com.example.android.spinitcloud.app.data.AssayContract.AssayEntry;
 
 /**
  * Manages a local database for weather data.
@@ -27,9 +27,9 @@ import com.example.android.sunshine.app.data.AssayContract.AssayEntry;
 public class AssayDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
-    static final String DATABASE_NAME = "weather.db";
+    static final String DATABASE_NAME = "assays.db";
 
     public AssayDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,28 +45,13 @@ public class AssayDbHelper extends SQLiteOpenHelper {
                 // for a certain date and all dates *following*, so the forecast data
                 // should be sorted accordingly.
                 AssayContract.AssayEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-
                 // the ID of the location entry associated with this weather data
-                AssayEntry.COLUMN_LOC_KEY + " INTEGER NOT NULL, " +
                 AssayEntry.COLUMN_DATE + " INTEGER NOT NULL, " +
                 AssayEntry.COLUMN_SHORT_DESC + " TEXT NOT NULL, " +
-                AssayEntry.COLUMN_WEATHER_ID + " INTEGER NOT NULL," +
-
-                AssayContract.AssayEntry.COLUMN_MIN_TEMP + " REAL NOT NULL, " +
-                AssayEntry.COLUMN_MAX_TEMP + " REAL NOT NULL, " +
-
-                AssayEntry.COLUMN_HUMIDITY + " REAL NOT NULL, " +
-                AssayEntry.COLUMN_PRESSURE + " REAL NOT NULL, " +
-                AssayEntry.COLUMN_WIND_SPEED + " REAL NOT NULL, " +
-                AssayEntry.COLUMN_DEGREES + " REAL NOT NULL, " +
-
-
-
 
                 // To assure the application have just one weather entry per day
                 // per location, it's created a UNIQUE constraint with REPLACE strategy
-                " UNIQUE (" + AssayEntry.COLUMN_DATE + ", " +
-                AssayEntry.COLUMN_LOC_KEY + ") ON CONFLICT REPLACE);";
+                " UNIQUE (" + AssayEntry.COLUMN_DATE +") ON CONFLICT REPLACE);";
 
 
         sqLiteDatabase.execSQL(SQL_CREATE_ASSAYS_TABLE);

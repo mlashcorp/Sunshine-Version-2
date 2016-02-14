@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -39,12 +39,12 @@ public class SettingsActivity extends PreferenceActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add 'general' preferences, defined in the XML file
-        addPreferencesFromResource(R.xml.pref_general);
+        addPreferencesFromResource(com.example.android.spinitcloud.app.R.xml.pref_general);
 
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes.
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_key)));
+        bindPreferenceSummaryToValue(findPreference(getString(com.example.android.spinitcloud.app.R.string.pref_location_key)));
+        bindPreferenceSummaryToValue(findPreference(getString(com.example.android.spinitcloud.app.R.string.pref_units_key)));
     }
 
     /**

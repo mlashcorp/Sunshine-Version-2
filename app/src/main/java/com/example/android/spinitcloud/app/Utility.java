@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -29,9 +29,9 @@ public class Utility {
 
     public static boolean isMetric(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getString(context.getString(R.string.pref_units_key),
-                context.getString(R.string.pref_units_metric))
-                .equals(context.getString(R.string.pref_units_metric));
+        return prefs.getString(context.getString(com.example.android.spinitcloud.app.R.string.pref_units_key),
+                context.getString(com.example.android.spinitcloud.app.R.string.pref_units_metric))
+                .equals(context.getString(com.example.android.spinitcloud.app.R.string.pref_units_metric));
     }
 
 
@@ -68,8 +68,8 @@ public class Utility {
         // If the date we're building the String for is today's date, the format
         // is "Today, June 24"
         if (julianDay == currentJulianDay) {
-            String today = context.getString(R.string.today);
-            int formatId = R.string.format_full_friendly_date;
+            String today = context.getString(com.example.android.spinitcloud.app.R.string.today);
+            int formatId = com.example.android.spinitcloud.app.R.string.format_full_friendly_date;
             return String.format(context.getString(
                     formatId,
                     today,
@@ -101,9 +101,9 @@ public class Utility {
         int julianDay = Time.getJulianDay(dateInMillis, t.gmtoff);
         int currentJulianDay = Time.getJulianDay(System.currentTimeMillis(), t.gmtoff);
         if (julianDay == currentJulianDay) {
-            return context.getString(R.string.today);
+            return context.getString(com.example.android.spinitcloud.app.R.string.today);
         } else if ( julianDay == currentJulianDay +1 ) {
-            return context.getString(R.string.tomorrow);
+            return context.getString(com.example.android.spinitcloud.app.R.string.tomorrow);
         } else {
             Time time = new Time();
             time.setToNow();
@@ -141,27 +141,27 @@ public class Utility {
         // Based on weather code data found at:
         // http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
         if (assay_type >= 200 && assay_type <= 232) {
-            return R.drawable.ic_storm;
+            return com.example.android.spinitcloud.app.R.drawable.ic_storm;
         } else if (assay_type >= 300 && assay_type <= 321) {
-            return R.drawable.ic_light_rain;
+            return com.example.android.spinitcloud.app.R.drawable.ic_light_rain;
         } else if (assay_type >= 500 && assay_type <= 504) {
-            return R.drawable.ic_rain;
+            return com.example.android.spinitcloud.app.R.drawable.ic_rain;
         } else if (assay_type == 511) {
-            return R.drawable.ic_snow;
+            return com.example.android.spinitcloud.app.R.drawable.ic_snow;
         } else if (assay_type >= 520 && assay_type <= 531) {
-            return R.drawable.ic_rain;
+            return com.example.android.spinitcloud.app.R.drawable.ic_rain;
         } else if (assay_type >= 600 && assay_type <= 622) {
-            return R.drawable.ic_snow;
+            return com.example.android.spinitcloud.app.R.drawable.ic_snow;
         } else if (assay_type >= 701 && assay_type <= 761) {
-            return R.drawable.ic_fog;
+            return com.example.android.spinitcloud.app.R.drawable.ic_fog;
         } else if (assay_type == 761 || assay_type == 781) {
-            return R.drawable.ic_storm;
+            return com.example.android.spinitcloud.app.R.drawable.ic_storm;
         } else if (assay_type == 800) {
-            return R.drawable.ic_clear;
+            return com.example.android.spinitcloud.app.R.drawable.ic_clear;
         } else if (assay_type == 801) {
-            return R.drawable.ic_light_clouds;
+            return com.example.android.spinitcloud.app.R.drawable.ic_light_clouds;
         } else if (assay_type >= 802 && assay_type <= 804) {
-            return R.drawable.ic_cloudy;
+            return com.example.android.spinitcloud.app.R.drawable.ic_cloudy;
         }
         return -1;
     }
@@ -176,27 +176,27 @@ public class Utility {
         // Based on weather code data found at:
         // http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
         if (assay_type >= 200 && assay_type <= 232) {
-            return R.drawable.art_storm;
+            return com.example.android.spinitcloud.app.R.drawable.art_storm;
         } else if (assay_type >= 300 && assay_type <= 321) {
-            return R.drawable.art_light_rain;
+            return com.example.android.spinitcloud.app.R.drawable.art_light_rain;
         } else if (assay_type >= 500 && assay_type <= 504) {
-            return R.drawable.art_rain;
+            return com.example.android.spinitcloud.app.R.drawable.art_rain;
         } else if (assay_type == 511) {
-            return R.drawable.art_snow;
+            return com.example.android.spinitcloud.app.R.drawable.art_snow;
         } else if (assay_type >= 520 && assay_type <= 531) {
-            return R.drawable.art_rain;
+            return com.example.android.spinitcloud.app.R.drawable.art_rain;
         } else if (assay_type >= 600 && assay_type <= 622) {
-            return R.drawable.art_snow;
+            return com.example.android.spinitcloud.app.R.drawable.art_snow;
         } else if (assay_type >= 701 && assay_type <= 761) {
-            return R.drawable.art_fog;
+            return com.example.android.spinitcloud.app.R.drawable.art_fog;
         } else if (assay_type == 761 || assay_type == 781) {
-            return R.drawable.art_storm;
+            return com.example.android.spinitcloud.app.R.drawable.art_storm;
         } else if (assay_type == 800) {
-            return R.drawable.art_clear;
+            return com.example.android.spinitcloud.app.R.drawable.art_clear;
         } else if (assay_type == 801) {
-            return R.drawable.art_light_clouds;
+            return com.example.android.spinitcloud.app.R.drawable.art_light_clouds;
         } else if (assay_type >= 802 && assay_type <= 804) {
-            return R.drawable.art_clouds;
+            return com.example.android.spinitcloud.app.R.drawable.art_clouds;
         }
         return -1;
     }

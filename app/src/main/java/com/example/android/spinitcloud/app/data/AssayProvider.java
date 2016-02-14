@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app.data;
+package com.example.android.spinitcloud.app.data;
 
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
@@ -29,17 +29,13 @@ public class AssayProvider extends ContentProvider {
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private AssayDbHelper mOpenHelper;
 
-    static final int WEATHER = 100;
-    static final int WEATHER_WITH_LOCATION = 101;
-    static final int WEATHER_WITH_LOCATION_AND_DATE = 102;
-    static final int LOCATION = 300;
-
-
+    static final int ASSAYS = 100;
+    static final int ASSAYS_WITH_DATA = 101;
 
 
     /*
         Students: Here is where you need to create the UriMatcher. This UriMatcher will
-        match each URI to the WEATHER, WEATHER_WITH_LOCATION, WEATHER_WITH_LOCATION_AND_DATE,
+        match each URI to the ASSAYS, ASSAYS_WITH_DATA, WEATHER_WITH_LOCATION_AND_DATE,
         and LOCATION integer constants defined above.  You can test this by uncommenting the
         testUriMatcher test within TestUriMatcher.
      */
@@ -54,11 +50,8 @@ public class AssayProvider extends ContentProvider {
         final String authority = AssayContract.CONTENT_AUTHORITY;
 
         // For each type of URI you want to add, create a corresponding code.
-        matcher.addURI(authority, AssayContract.PATH_ASSAYS, WEATHER);
-        matcher.addURI(authority, AssayContract.PATH_ASSAYS + "/*", WEATHER_WITH_LOCATION);
-        matcher.addURI(authority, AssayContract.PATH_ASSAYS + "/*/#", WEATHER_WITH_LOCATION_AND_DATE);
-
-        matcher.addURI(authority, AssayContract.PATH_LOCATION, LOCATION);
+        matcher.addURI(authority, AssayContract.PATH_ASSAYS, ASSAYS);
+        matcher.addURI(authority, AssayContract.PATH_ASSAYS + "/*", ASSAYS_WITH_DATA);
         return matcher;
     }
 
@@ -84,12 +77,9 @@ public class AssayProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
 
         switch (match) {
-            // Student: Uncomment and fill out these two cases
-            case WEATHER_WITH_LOCATION_AND_DATE:
-                return AssayContract.AssayEntry.CONTENT_ITEM_TYPE;
-            case WEATHER_WITH_LOCATION:
+            case ASSAYS_WITH_DATA:
                 return AssayContract.AssayEntry.CONTENT_TYPE;
-            case WEATHER:
+            case ASSAYS:
                 return AssayContract.AssayEntry.CONTENT_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -105,7 +95,7 @@ public class AssayProvider extends ContentProvider {
         switch (sUriMatcher.match(uri)) {
 
             // "weather"
-            case WEATHER: {
+            case ASSAYS: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         AssayContract.AssayEntry.TABLE_NAME,
                         projection,
@@ -135,7 +125,7 @@ public class AssayProvider extends ContentProvider {
         Uri returnUri;
 
         switch (match) {
-            case WEATHER: {
+            case ASSAYS: {
                 normalizeDate(values);
                 long _id = db.insert(AssayContract.AssayEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
@@ -160,7 +150,7 @@ public class AssayProvider extends ContentProvider {
         // this makes delete all rows return the number of rows deleted
         if ( null == selection ) selection = "1";
         switch (match) {
-            case WEATHER:
+            case ASSAYS:
                 rowsDeleted = db.delete(
                         AssayContract.AssayEntry.TABLE_NAME, selection, selectionArgs);
                 break;
@@ -191,7 +181,7 @@ public class AssayProvider extends ContentProvider {
         int rowsUpdated;
 
         switch (match) {
-            case WEATHER:
+            case ASSAYS:
                 normalizeDate(values);
                 rowsUpdated = db.update(AssayContract.AssayEntry.TABLE_NAME, values, selection,
                         selectionArgs);
@@ -211,7 +201,7 @@ public class AssayProvider extends ContentProvider {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         switch (match) {
-            case WEATHER:
+            case ASSAYS:
                 db.beginTransaction();
                 int returnCount = 0;
                 try {

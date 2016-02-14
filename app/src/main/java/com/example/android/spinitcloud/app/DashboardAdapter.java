@@ -1,4 +1,4 @@
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -33,11 +33,11 @@ public class DashboardAdapter extends CursorAdapter {
         public final TextView lowTempView;
 
         public ViewHolder(View view) {
-            iconView = (ImageView) view.findViewById(R.id.list_item_icon);
-            dateView = (TextView) view.findViewById(R.id.list_item_date_textview);
-            descriptionView = (TextView) view.findViewById(R.id.list_item_forecast_textview);
-            resultView = (TextView) view.findViewById(R.id.list_item_high_textview);
-            lowTempView = (TextView) view.findViewById(R.id.list_item_low_textview);
+            iconView = (ImageView) view.findViewById(com.example.android.spinitcloud.app.R.id.list_item_icon);
+            dateView = (TextView) view.findViewById(com.example.android.spinitcloud.app.R.id.list_item_date_textview);
+            descriptionView = (TextView) view.findViewById(com.example.android.spinitcloud.app.R.id.list_item_forecast_textview);
+            resultView = (TextView) view.findViewById(com.example.android.spinitcloud.app.R.id.list_item_high_textview);
+            lowTempView = (TextView) view.findViewById(com.example.android.spinitcloud.app.R.id.list_item_low_textview);
         }
     }
 
@@ -52,11 +52,11 @@ public class DashboardAdapter extends CursorAdapter {
         int layoutId = -1;
         switch (viewType) {
             case VIEW_TYPE_TODAY: {
-                layoutId = R.layout.list_item_forecast_today;
+                layoutId = com.example.android.spinitcloud.app.R.layout.list_item_forecast_today;
                 break;
             }
             case VIEW_TYPE_FUTURE_DAY: {
-                layoutId = R.layout.list_item_forecast;
+                layoutId = com.example.android.spinitcloud.app.R.layout.list_item_forecast;
                 break;
             }
         }

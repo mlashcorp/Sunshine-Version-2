@@ -1,4 +1,4 @@
-package com.example.android.sunshine.app.data;
+package com.example.android.spinitcloud.app.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -47,16 +47,8 @@ public class TestUtilities extends AndroidTestCase {
      */
     static ContentValues createWeatherValues(long locationRowId) {
         ContentValues weatherValues = new ContentValues();
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_LOC_KEY, locationRowId);
         weatherValues.put(AssayContract.AssayEntry.COLUMN_DATE, TEST_DATE);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_DEGREES, 1.1);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_HUMIDITY, 1.2);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_PRESSURE, 1.3);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_MAX_TEMP, 75);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_MIN_TEMP, 65);
         weatherValues.put(AssayContract.AssayEntry.COLUMN_SHORT_DESC, "Asteroids");
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_WIND_SPEED, 5.5);
-        weatherValues.put(AssayContract.AssayEntry.COLUMN_WEATHER_ID, 321);
 
         return weatherValues;
     }

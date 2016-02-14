@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +31,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.android.sunshine.app.data.AssayContract;
+import com.example.android.spinitcloud.app.data.AssayContract;
 
 /**
  * Encapsulates showing the start assay controls, fetching previous assays from DB and displaying it as a {@link ListView} layout.
@@ -62,7 +60,6 @@ public class DashboardFragment extends Fragment implements LoaderManager.LoaderC
 
     // These indices are tied to ASSAY_COLUMNS.  If ASSAY_COLUMNS changes, these
     // must change.
-    static final int COL_WEATHER_ID = 0;
     static final int COL_ASSAY_DATE = 1;
     static final int COL_ASSAY_DESC = 2;
     static final int COL_ASSAY_RESULT = 3;
@@ -93,7 +90,7 @@ public class DashboardFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.forecastfragment, menu);
+        inflater.inflate(com.example.android.spinitcloud.app.R.menu.forecastfragment, menu);
     }
 
     @Override
@@ -106,7 +103,7 @@ public class DashboardFragment extends Fragment implements LoaderManager.LoaderC
 //            updateWeather();
 //            return true;
 //        }
-        if (id == R.id.action_map) {
+        if (id == com.example.android.spinitcloud.app.R.id.action_map) {
             return true;
         }
 
@@ -121,10 +118,10 @@ public class DashboardFragment extends Fragment implements LoaderManager.LoaderC
         // use it to populate the ListView it's attached to.
         mDashboardAdapter = new DashboardAdapter(getActivity(), null, 0);
 
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(com.example.android.spinitcloud.app.R.layout.fragment_main, container, false);
 
         // Get a reference to the ListView, and attach this adapter to it.
-        mListView = (ListView) rootView.findViewById(R.id.listview_forecast);
+        mListView = (ListView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.listview_forecast);
         mListView.setAdapter(mDashboardAdapter);
         // We'll call our MainActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

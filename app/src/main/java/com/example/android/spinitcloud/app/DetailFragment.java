@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.spinitcloud.app;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -34,8 +34,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.sunshine.app.data.AssayContract;
-import com.example.android.sunshine.app.data.AssayContract.AssayEntry;
+import com.example.android.spinitcloud.app.data.AssayContract;
+import com.example.android.spinitcloud.app.data.AssayContract.AssayEntry;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -87,22 +87,22 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             mUri = arguments.getParcelable(DetailFragment.DETAIL_URI);
         }
 
-        View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-        mIconView = (ImageView) rootView.findViewById(R.id.detail_icon);
-        mDateView = (TextView) rootView.findViewById(R.id.detail_date_textview);
-        mFriendlyDateView = (TextView) rootView.findViewById(R.id.detail_day_textview);
-        mDescriptionView = (TextView) rootView.findViewById(R.id.detail_forecast_textview);
-        mResultView = (TextView) rootView.findViewById(R.id.detail_high_textview);
+        View rootView = inflater.inflate(com.example.android.spinitcloud.app.R.layout.fragment_detail, container, false);
+        mIconView = (ImageView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.detail_icon);
+        mDateView = (TextView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.detail_date_textview);
+        mFriendlyDateView = (TextView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.detail_day_textview);
+        mDescriptionView = (TextView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.detail_forecast_textview);
+        mResultView = (TextView) rootView.findViewById(com.example.android.spinitcloud.app.R.id.detail_high_textview);
         return rootView;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        inflater.inflate(R.menu.detailfragment, menu);
+        inflater.inflate(com.example.android.spinitcloud.app.R.menu.detailfragment, menu);
 
         // Retrieve the share menu item
-        MenuItem menuItem = menu.findItem(R.id.action_share);
+        MenuItem menuItem = menu.findItem(com.example.android.spinitcloud.app.R.id.action_share);
 
         // Get the provider and hold onto it to set/change the share intent.
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
@@ -127,12 +127,12 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         super.onActivityCreated(savedInstanceState);
     }
 
-    void onLocationChanged( String newLocation ) {
+    void onLocationChanged( ) {
         // replace the uri, since the location has changed
         Uri uri = mUri;
         if (null != uri) {
             long date = AssayEntry.getDateFromUri(uri);
-            Uri updatedUri = AssayContract.AssayEntry.buildAssayWithDate(newLocation, date);
+            Uri updatedUri = AssayContract.AssayEntry.buildAssayWithDate(date);
             mUri = updatedUri;
             getLoaderManager().restartLoader(DETAIL_LOADER, null, this);
         }
