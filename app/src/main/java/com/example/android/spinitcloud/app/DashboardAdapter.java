@@ -20,7 +20,7 @@ public class DashboardAdapter extends CursorAdapter {
     private static final int VIEW_TYPE_FUTURE_DAY = 1;
 
     // Flag to determine if we want to use a separate view for "today".
-    private boolean mUseTodayLayout = true;
+    private boolean mUseTodayLayout = false;
 
     /**
      * Cache of the children views for a forecast list item.

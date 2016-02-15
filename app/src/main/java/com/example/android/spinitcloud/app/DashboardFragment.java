@@ -62,8 +62,8 @@ public class DashboardFragment extends Fragment implements LoaderManager.LoaderC
     // must change.
     static final int COL_ASSAY_DATE = 1;
     static final int COL_ASSAY_DESC = 2;
-    static final int COL_ASSAY_RESULT = 3;
-    static final int COL_ASSAY_TEST_TYPE = 6;
+    static final int COL_ASSAY_RESULT = 4;
+    static final int COL_ASSAY_TEST_TYPE = 3;
 
 
     /**

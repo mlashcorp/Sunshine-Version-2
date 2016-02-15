@@ -27,7 +27,7 @@ import com.example.android.spinitcloud.app.data.AssayContract.AssayEntry;
 public class AssayDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 7;
 
     static final String DATABASE_NAME = "assays.db";
 
@@ -48,7 +48,8 @@ public class AssayDbHelper extends SQLiteOpenHelper {
                 // the ID of the location entry associated with this weather data
                 AssayEntry.COLUMN_DATE + " INTEGER NOT NULL, " +
                 AssayEntry.COLUMN_SHORT_DESC + " TEXT NOT NULL, " +
-
+                AssayEntry.COLUMN_TEST_TYPE + " INTEGER NOT NULL, " +
+                AssayEntry.COLUMN_RESULT + " FLOAT NOT NULL," +
                 // To assure the application have just one weather entry per day
                 // per location, it's created a UNIQUE constraint with REPLACE strategy
                 " UNIQUE (" + AssayEntry.COLUMN_DATE +") ON CONFLICT REPLACE);";

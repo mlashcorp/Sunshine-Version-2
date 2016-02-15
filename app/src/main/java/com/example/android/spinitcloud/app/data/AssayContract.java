@@ -68,14 +68,14 @@ public class AssayContract {
         // Date, stored as long in milliseconds since the epoch
         public static final String COLUMN_DATE = "date";
         // Weather id as returned by API, to identify the icon to be used
-        public static final String COLUMN_TEST_TYPE = "CRP";
+        public static final String COLUMN_TEST_TYPE = "type";
 
         // Short description and long description of the weather, as provided by API.
         // e.g "clear" vs "sky is clear".
         public static final String COLUMN_SHORT_DESC = "short_desc";
 
         // RESULT
-        public static final String COLUMN_RESULT = "0";
+        public static final String COLUMN_RESULT = "result";
 
 
 

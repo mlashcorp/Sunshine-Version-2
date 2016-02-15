@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class MainActivity extends ActionBarActivity implements DashboardFragment.Callback {
 
@@ -54,9 +55,10 @@ public class MainActivity extends ActionBarActivity implements DashboardFragment
 
         DashboardFragment dashboardFragment =  ((DashboardFragment)getSupportFragmentManager()
                 .findFragmentById(com.example.android.spinitcloud.app.R.id.fragment_dashboard));
-        dashboardFragment.setUseTodayLayout(!mTwoPane);
+        dashboardFragment.setUseTodayLayout(false);
+        ImageView img= (ImageView) findViewById(R.id.spinit_icon_image);
+        img.setImageResource(R.mipmap.green_icon);
 
-        //SpinitSyncAdapter.initializeSyncAdapter(this);
     }
 
     @Override
