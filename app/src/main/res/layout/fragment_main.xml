@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="device ready"
+            android:text="searching for device"
             android:id="@+id/textView2"
             android:layout_below="@+id/textView"
             android:layout_alignLeft="@+id/textView"
@@ -66,9 +66,9 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:contentDescription="@string/device_status"
+            android:visibility="visible"
             android:layout_alignBottom="@+id/textView2"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView" />
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <RelativeLayout
